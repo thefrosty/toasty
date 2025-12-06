@@ -1,25 +1,20 @@
-toasty
+Toasty!
 ===========
 
-Show Dan Forden's Toasty from Mortal Kombat as an Easter Egg for your website
+Show Dan Forden's Toasty from Mortal Kombat III as an Easter Egg for your website.
 
-###Usage
+### Usage
 
 ```html
 <button id="toasty-button" style="padding:10px;">Show toasty</button>
- 
+<script src="toasty.js"></script>
 <script>
-    $(document).ready( function(){
-        
-        $("body").toasty();
-
-        $("#toasty-button").click( function(){
-             $("body").toasty('pop');
-        });
-
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+        toasty()
+        document.getElementById('toasty-button').addEventListener('click', () => toasty('pop'))
+    })
 </script>
 ```
 
-###Demo and examples
-[rubentd.com/toasty](http://rubentd.com/toasty)
+### Demo
+[https://thefrosty.github.io/toasty/](https://thefrosty.github.io/toasty/)

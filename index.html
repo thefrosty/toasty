@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Toasty!</title>
+    <link rel="stylesheet" href="toasty.css"/>
+</head>
+<body>
+    <button id="toasty-button" style="padding:10px;">Show toasty</button>
+    <script src="toasty.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        toasty()
+        document.getElementById('toasty-button').addEventListener('click', () => toasty('pop'))
+      })
+    </script>
+</body>
+</html>
