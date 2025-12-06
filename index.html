@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>toasty. Show Dan Forden's Toasty from Mortal Kombat as an Easter Egg for your website</title>
-	<link rel="stylesheet" href="toasty.css" />
+    <meta charset="utf-8">
+    <title>Toasty!</title>
+    <link rel="stylesheet" href="toasty.css"/>
 </head>
-
 <body>
-
-  <button id="toasty-button" style="padding:10px;">Show toasty</button>
-
-
-	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script src="toasty.js"></script>
-  <script>
-
-      $(document).ready( function(){
-
-          $("body").toasty();
-
-          $("#toasty-button").click( function(){
-               $("body").toasty('pop');
-          });
-
-      });
-  </script>
-
+    <button id="toasty-button" style="padding:10px;">Show toasty</button>
+    <script src="toasty.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        toasty()
+        document.getElementById('toasty-button').addEventListener('click', () => toasty('pop'))
+      })
+    </script>
 </body>
 </html>
