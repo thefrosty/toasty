@@ -12,24 +12,31 @@ class Toasty {
   }
 
   init () {
-    document.body.insertAdjacentHTML('beforeend', `<div id="toasty"><img src="${this.options.image}" alt="Toasty!"></div>`)
-    const toastyDiv = document.getElementById('toasty')
-    toastyDiv.style.position = 'fixed'
-    toastyDiv.style.right = '-170px'
-    toastyDiv.style.bottom = '0'
-    if (this.options.sound) {
-      document.body.insertAdjacentHTML('beforeend', `<audio id="toasty-audio"><source src="${this.options.sound}" type="audio/mpeg"></audio>`)
+    document.body.insertAdjacentHTML(
+      'beforeend',
+      `<div id="toasty"><img src="${this.options.image}" alt="Toasty!"></div>`
+    )
+    const element = document.getElementById('toasty')
+    element.style.position = 'fixed'
+    element.style.right = '-200px'
+    element.style.bottom = '0'
+    if (!this.options.sound) {
+      return
     }
+    document.body.insertAdjacentHTML(
+      'beforeend',
+      `<audio id="toasty-audio"><source src="${this.options.sound}" type="audio/mpeg"></audio>`
+    )
   }
 
   pop () {
-    const audio = document.getElementById('toasty-audio')
-    if (audio.length) {
-      audio.play()
-    }
     const Toasty = document.getElementById('toasty')
     Toasty.classList.add('show-dan')
     setTimeout(() => Toasty.classList.remove('show-dan'), 1000)
+    const audio = document.getElementById('toasty-audio')
+    if (audio) {
+      audio.play()
+    }
   }
 }
 
@@ -43,11 +50,13 @@ function toasty (options) {
     if (singleToasty) {
       singleToasty.pop()
     }
-    return
+    return singleToasty
   }
   options = { ...defaults, ...(options || {}) }
   if (!singleToasty) {
     singleToasty = new Toasty(options)
     singleToasty.init()
   }
+
+  return singleToasty
 }
